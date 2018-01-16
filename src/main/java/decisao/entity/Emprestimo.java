@@ -38,13 +38,15 @@ public class Emprestimo implements Serializable {
 		
 	}
 
-	public Emprestimo(Integer id, String departamento, String situacao, String dataemprestimo, String responsavel) {
+	public Emprestimo(Integer id, String departamento, String situacao, String dataemprestimo, 
+						String responsavel, Funcionario funcionario) {
 		super();
 		Id = id;
 		this.departamento = departamento;
 		this.situacao = situacao;
 		this.dataemprestimo = dataemprestimo;
 		this.responsavel = responsavel;
+		this.funcionario = funcionario;
 	}
 
 	public Integer getId() {

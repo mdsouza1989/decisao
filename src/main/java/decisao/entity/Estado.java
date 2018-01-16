@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,25 +13,22 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Setor implements Serializable {
+public class Estado implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column
 	private String nome;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "setor")
-	public List<Funcionario> funcionario = new ArrayList<>();
+	@OneToMany(mappedBy="estado")
+	private List<Cidade> cidades = new ArrayList<>();
 	
-	public Setor() {
-		
+	public Estado() {
 	}
 
-	public Setor(Integer id, String nome) {
+	public Estado(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -54,13 +50,12 @@ public class Setor implements Serializable {
 		this.nome = nome;
 	}
 
-
-	public List<Funcionario> getFuncionario() {
-		return funcionario;
+	public List<Cidade> getCidades() {
+		return cidades;
 	}
 
-	public void setFuncionario(List<Funcionario> funcionario) {
-		this.funcionario = funcionario;
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 
 	@Override
@@ -79,7 +74,7 @@ public class Setor implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Setor other = (Setor) obj;
+		Estado other = (Estado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -91,3 +86,4 @@ public class Setor implements Serializable {
 	
 	
 }
+
